@@ -1,0 +1,17 @@
+.footer {
+    width: 100%;
+    background-color: var(--tertiary-color);
+    color: var(--primary-color);
+    position: fixed;
+    bottom: 0;
+    padding: 0.5rem 1rem;
+
+    &__navList {
+        display: flex;
+        justify-content: space-around;
+        align-items: center;
+        list-style: none;
+        padding-left: 0;
+    }
+}
+
