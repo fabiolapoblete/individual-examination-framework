@@ -3,6 +3,7 @@ import MovieItem from "../Components/MovieItem";
 import SearchBar from "../Components/SearchBar";
 import { useSelector } from "react-redux";
 import { useEffect, useState } from "react";
+import style from "./SearchPage.module.scss";
 
 function SearchPage() {
   const state = useSelector((state) => {
@@ -16,10 +17,10 @@ function SearchPage() {
   }, [state]);
 
   return (
-    <main>
-      <PageTitle title="Movie Search" />;
-      <SearchBar />;
-      <section>
+    <main className={style.searchPage}>
+      <PageTitle title="Movie Search" />
+      <SearchBar />
+      <section className={style.searchPage__movies}>
         {movies.map((movie, i) => (
           <MovieItem movie={movie} key={movie.id + i.toString()} />
         ))}

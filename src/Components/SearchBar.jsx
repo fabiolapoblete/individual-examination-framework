@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import { useDispatch } from "react-redux";
 import { fillMovieList } from "../app/moviesSlice";
+import style from "./SearchBar.module.scss";
 
 function SearchBar() {
   const dispatch = useDispatch();
@@ -30,8 +31,9 @@ function SearchBar() {
   }, [searchResult]);
 
   return (
-    <section>
+    <section className={style.searchBar}>
       <input
+        className={style.searchBar__input}
         onChange={(e) => {
           inputValue = e.target.value;
         }}
