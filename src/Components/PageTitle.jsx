@@ -1,5 +1,9 @@
-function PageTitle() {
-  return <h2>PageTitle goes here</h2>;
+function PageTitle({ title }) {
+  return (
+    <section>
+      <h2>{title}</h2>
+    </section>
+  );
 }
 
 export default PageTitle;
