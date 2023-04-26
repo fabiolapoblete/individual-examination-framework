@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import { useDispatch } from "react-redux";
 import { fillMovieList } from "../app/moviesSlice";
 import style from "./SearchBar.module.scss";
+import Button from "./Button";
 
 function SearchBar() {
   const dispatch = useDispatch();
@@ -9,8 +10,10 @@ function SearchBar() {
 
   const [searchResult, setSearchResult] = useState([]);
   const [searchTerm, setSearchTerm] = useState("Emma");
+  const [page, setPage] = useState(1);
 
-  const API_URL = "http://www.omdbapi.com/?apikey=37fe945a&s=" + searchTerm;
+  const API_URL =
+    "http://www.omdbapi.com/?apikey=37fe945a&s=" + searchTerm + "&page=" + page;
 
   useEffect(() => {
     console.log("fetch");
@@ -21,10 +24,10 @@ function SearchBar() {
           .then((movieData) => {
             setSearchResult(movieData.Search);
           });
-  }, [searchTerm]);
+  }, [searchTerm, page]);
 
   useEffect(() => {
-    if (searchResult.length > 0) {
+    if (searchResult > 0) {
       console.log("dispatch");
       dispatch(fillMovieList(searchResult));
     }
@@ -41,13 +44,35 @@ function SearchBar() {
         type="text"
         placeholder="search..."
       />
-      <button
-        className="searchButton"
-        type="button"
-        onClick={() => setSearchTerm(inputValue)}
-      >
-        SEARCH
-      </button>
+      <Button title="search" action={() => setSearchTerm(inputValue)} />
+      <section className={style.searchBar__pagination}>
+        {/* <Button
+          className={style.searchBar__pagination__button}
+          disabled={page == 1}
+          title="&lt;"
+          action={() => setPage(page - 1)}
+        />
+        <p className={style.searchBar__pagination__page}>{page}</p>
+        <Button title="&gt;" action={() => setPage(page + 1)} /> */}
+        <button
+          className={style.searchBar__pagination__button}
+          disabled={page == 1}
+          onClick={() => {
+            setPage(page - 1);
+          }}
+        >
+          &lt;
+        </button>
+        <p className={style.searchBar__pagination__page}>{page}</p>
+        <button
+          className={style.searchBar__pagination__button}
+          onClick={() => {
+            setPage(page + 1);
+          }}
+        >
+          &gt;
+        </button>
+      </section>
     </section>
   );
 }

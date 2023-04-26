@@ -2,6 +2,7 @@
     padding: 1rem 0;
     display: flex;
     gap: 1rem;
+    margin: 1rem 0;
 
     &__input {
         background-color: transparent;
@@ -9,5 +10,17 @@
         border: 1px solid var(--tertiary-color);
         padding: 0.8rem 0.5rem;
         border-radius: 6px;
+    }
+
+    &__pagination {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        gap: 0.5rem;
+    }
+
+    &__pagination__page {
+        color: var(--text-color);
+        font-size: 20px;
     }
 }
