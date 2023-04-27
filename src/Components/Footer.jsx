@@ -1,13 +1,21 @@
+import { useNavigate } from "react-router-dom";
 import style from "./Footer.module.scss";
 
 function Footer() {
+  const navigate = useNavigate();
+  const goToMyList = () => {
+    navigate("/");
+  };
+  const goToSearch = () => {
+    navigate("/search");
+  };
   return (
     <footer className={style.footer}>
       <nav>
         <ul className={style.footer__navList}>
-          <li>My list</li>
+          <li onClick={goToMyList}>My list</li>
           <li>Watched</li>
-          <li>Search</li>
+          <li onClick={goToSearch}>Search</li>
         </ul>
       </nav>
     </footer>

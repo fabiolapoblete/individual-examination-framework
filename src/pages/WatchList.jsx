@@ -4,24 +4,27 @@ import PageTitle from "../Components/PageTitle";
 import MovieItem from "../Components/MovieItem";
 
 function WatchList() {
-  const state = useSelector((state) => {
-    return state;
-  });
+  // const state = useSelector((state) => {
+  //   return state;
+  // });
 
-  const [watchList, setWatchList] = useState([state.watchList]);
+  // const [watchList, setWatchList] = useState([state.watchList]);
 
-  useEffect(() => {
-    setWatchList(state.watchList);
-    console.log(watchList);
-  }, [state]);
+  // useEffect(() => {
+  //   setWatchList(state.watchList);
+  //   console.log(watchList);
+  // }, [state]);
+
+  const movies = useSelector((state) => state.watchList);
+  console.log(movies);
 
   return (
     <main>
       <PageTitle title="My List" />
       {/*Någon typ av filterfunktion*/}
-      {watchList.map((movie, i) => {
-        <MovieItem movie={movie} key={movie.id + i.toString()} />;
-      })}
+      {movies.map((movie, i) => (
+        <MovieItem movie={movie} key={movie.id + i.toString()} />
+      ))}
     </main>
   );
 }

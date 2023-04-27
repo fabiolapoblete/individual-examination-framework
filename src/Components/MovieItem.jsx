@@ -15,7 +15,8 @@ function MovieItem({ movie }) {
           dispatch(addToWatchList(movie));
         }}
       >
-        +
+        &#x2713;
+        {/* eller + */}
       </button>
     </figure>
   );
