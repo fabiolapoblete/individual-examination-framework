@@ -14,6 +14,7 @@ function SearchPage() {
 
   useEffect(() => {
     setMovies(state.movies);
+    console.log(movies);
   }, [state]);
 
   return (

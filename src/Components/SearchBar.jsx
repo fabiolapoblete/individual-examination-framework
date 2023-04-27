@@ -24,10 +24,11 @@ function SearchBar() {
           .then((movieData) => {
             setSearchResult(movieData.Search);
           });
+    console.log(searchResult);
   }, [searchTerm, page]);
 
   useEffect(() => {
-    if (searchResult > 0) {
+    if (searchResult) {
       console.log("dispatch");
       dispatch(fillMovieList(searchResult));
     }
@@ -46,14 +47,6 @@ function SearchBar() {
       />
       <Button title="search" action={() => setSearchTerm(inputValue)} />
       <section className={style.searchBar__pagination}>
-        {/* <Button
-          className={style.searchBar__pagination__button}
-          disabled={page == 1}
-          title="&lt;"
-          action={() => setPage(page - 1)}
-        />
-        <p className={style.searchBar__pagination__page}>{page}</p>
-        <Button title="&gt;" action={() => setPage(page + 1)} /> */}
         <button
           className={style.searchBar__pagination__button}
           disabled={page == 1}
