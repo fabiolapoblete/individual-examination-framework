@@ -1,0 +1,27 @@
+.searchButton {
+    background-color: var(--secondary-color);
+    color: var(--primary-color);
+    font-family: inherit;
+    font-size: 1rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    border: none;
+    border-radius: 6px;
+}
+
+.roundButton {
+    position: absolute;
+    bottom: 15px;
+    right: 10px;
+    border-radius: 50%;
+    width: 30px;
+    height: 30px;
+    background-color: var(--tertiary-color);
+    color: var(--primary-color);
+    font-size: 30px;
+    display: flex;
+    justify-content: center;
+    align-items: center;    
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.249);
+    
+}

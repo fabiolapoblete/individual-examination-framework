@@ -1,8 +1,8 @@
-import style from "./Button.module.scss";
+import style from "./Buttons.module.scss";
 
 function Button({ title, action }) {
   return (
-    <button className={style.button} onClick={action}>
+    <button className={style.searchButton} onClick={action}>
       {title}
     </button>
   );

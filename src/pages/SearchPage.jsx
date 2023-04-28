@@ -21,9 +21,10 @@ function SearchPage() {
     <main className={style.searchPage}>
       <PageTitle title="Movie Search" />
       <SearchBar />
+
       <section className={style.searchPage__movies}>
-        {movies.map((movie, i) => (
-          <MovieItem movie={movie} key={movie.id + i.toString()} />
+        {movies.map((movie) => (
+          <MovieItem movie={movie} buttonTitle="+" key={movie.imdbID} />
         ))}
       </section>
     </main>

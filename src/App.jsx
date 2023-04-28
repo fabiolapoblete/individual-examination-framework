@@ -5,6 +5,7 @@ import WatchList from "./pages/WatchList";
 import Watched from "./pages/Watched";
 import SearchPage from "./pages/SearchPage";
 import PageNotFound from "./pages/PageNotFound";
+import MoviePage from "./pages/MoviePage";
 import Header from "./Components/Header";
 import Footer from "./Components/Footer";
 //Styling
@@ -18,6 +19,7 @@ function App() {
         <Route exact path="/" element={<WatchList />} />
         <Route path="/watched" element={<Watched />} />
         <Route path="/search" element={<SearchPage />} />
+        <Route path="/movie/:id" element={<MoviePage />} />
         <Route path="/error" element={<PageNotFound />} />
         <Route path="*" element={<Navigate to="/error" />} />
       </Routes>

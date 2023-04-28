@@ -45,7 +45,13 @@ function SearchBar() {
         type="text"
         placeholder="search..."
       />
-      <Button title="search" action={() => setSearchTerm(inputValue)} />
+      <Button
+        title="search"
+        action={() => {
+          setSearchTerm(inputValue);
+          setPage(1);
+        }}
+      />
       <section className={style.searchBar__pagination}>
         <button
           className={style.searchBar__pagination__button}
