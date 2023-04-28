@@ -1,6 +1,10 @@
 import { useDispatch, useSelector } from "react-redux";
 import style from "./MovieItem.module.scss";
-import { addToWatchList } from "../app/moviesSlice";
+import {
+  addToWatchList,
+  removeFromWatchList,
+  addToWatchedList,
+} from "../app/moviesSlice";
 import RoundButton from "./RoundButton";
 import { Link } from "react-router-dom";
 
@@ -30,11 +34,28 @@ function MovieItem({ movie, buttonTitle }) {
     return false;
   });
 
+  const inWatchedList = state.watched.some((movieItem) => {
+    if (movie.imdbID === movieItem.imdbID) {
+      return true;
+    }
+    return false;
+  });
+
   return (
-    //Button for adding/removing items
-    //Button takes title and action
     <>
       {inWatchList ? (
+        <article className={style.movieContainer}>
+          <MovieItemContent movie={movie} />
+          <RoundButton
+            title="&#x2713;"
+            action={() => {
+              dispatch(removeFromWatchList(movie));
+              dispatch(addToWatchedList(movie));
+              //remove from watchList
+            }}
+          />
+        </article>
+      ) : inWatchedList ? (
         <article className={style.movieContainer}>
           <MovieItemContent movie={movie} />
         </article>

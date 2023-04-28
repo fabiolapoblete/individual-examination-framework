@@ -24,7 +24,7 @@ function SearchPage() {
 
       <section className={style.searchPage__movies}>
         {movies.map((movie) => (
-          <MovieItem movie={movie} buttonTitle="+" key={movie.imdbID} />
+          <MovieItem movie={movie} key={movie.imdbID} buttonTitle="+" />
         ))}
       </section>
     </main>

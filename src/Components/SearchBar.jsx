@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import { useDispatch } from "react-redux";
 import { fillMovieList } from "../app/moviesSlice";
 import style from "./SearchBar.module.scss";
-import Button from "./Button";
+import SearchButton from "./SearchButton";
 
 function SearchBar() {
   const dispatch = useDispatch();
@@ -34,6 +34,12 @@ function SearchBar() {
     }
   }, [searchResult]);
 
+  const [disabled, setDisabled] = useState(false);
+
+  useEffect(() => {
+    page == 1 ? setDisabled(true) : setDisabled(false);
+  }, [page]);
+
   return (
     <section className={style.searchBar}>
       <input
@@ -45,7 +51,7 @@ function SearchBar() {
         type="text"
         placeholder="search..."
       />
-      <Button
+      <SearchButton
         title="search"
         action={() => {
           setSearchTerm(inputValue);
@@ -53,24 +59,20 @@ function SearchBar() {
         }}
       />
       <section className={style.searchBar__pagination}>
-        <button
-          className={style.searchBar__pagination__button}
-          disabled={page == 1}
-          onClick={() => {
+        <SearchButton
+          title="&lt;"
+          disabled={disabled}
+          action={() => {
             setPage(page - 1);
           }}
-        >
-          &lt;
-        </button>
+        />
         <p className={style.searchBar__pagination__page}>{page}</p>
-        <button
-          className={style.searchBar__pagination__button}
-          onClick={() => {
+        <SearchButton
+          title="&gt;"
+          action={() => {
             setPage(page + 1);
           }}
-        >
-          &gt;
-        </button>
+        />
       </section>
     </section>
   );

@@ -1,7 +1,7 @@
 function MoviePage() {
   return (
     <main>
-      <h1>Movie Page</h1>
+      <h2>Movie NAME</h2>
     </main>
   );
 }
