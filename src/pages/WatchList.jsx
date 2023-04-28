@@ -1,23 +1,26 @@
 import { useSelector } from "react-redux";
 import PageTitle from "../Components/PageTitle";
 import MovieItem from "../Components/MovieItem";
+import style from "./WatchList.module.scss";
 
 function WatchList() {
   const movies = useSelector((state) => state.watchList);
   console.log(movies);
 
   return (
-    <main>
+    <main className={style.watchList}>
       <PageTitle title="My List" />
       {/*Någon typ av filterfunktion*/}
-      {movies.map((movie) => (
-        <MovieItem
-          movie={movie}
-          buttonTitle="&#x2713;"
-          key={movie.imdbID}
-          inWatchList={true}
-        />
-      ))}
+      <section className={style.watchList__movies}>
+        {movies.map((movie) => (
+          <MovieItem
+            movie={movie}
+            buttonTitle="&#x2713;"
+            key={movie.imdbID}
+            inWatchList={true}
+          />
+        ))}
+      </section>
     </main>
   );
 }
