@@ -22,6 +22,7 @@ function MovieItemContent({ movie }) {
 
 function MovieItem({ movie, buttonTitle }) {
   const dispatch = useDispatch();
+  console.log(movie, "movie");
 
   const state = useSelector((state) => {
     return state;

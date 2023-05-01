@@ -25,6 +25,14 @@ export const movieSlice = createSlice({
     addToWatchedList: (state, action) => {
       state.watched.push(action.payload);
     },
+    addRating: (state, action) => {
+      let index = state.watched.findIndex(
+        (movie) => movie.imdbID == action.payload.imdbID
+      );
+      state.watched.splice(index, 1);
+      state.watched.push(action.payload);
+      console.log(state.watched);
+    },
   },
 });
 
@@ -33,6 +41,7 @@ export const {
   addToWatchList,
   removeFromWatchList,
   addToWatchedList,
+  addRating,
 } = movieSlice.actions;
 
 export default movieSlice.reducer;

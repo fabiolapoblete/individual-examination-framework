@@ -6,6 +6,8 @@ import SearchButton from "../Components/SearchButton";
 import { addToWatchList } from "../app/moviesSlice";
 import style from "./MoviePage.module.scss";
 import PageTitle from "../Components/PageTitle";
+// import InputBox from "../Components/InputBox";
+import AddRating from "./AddRating";
 
 function MoviePage() {
   const params = useParams();
@@ -59,8 +61,16 @@ function MoviePage() {
       </section>
 
       <section className={style.moviePage__movieCard}>
-        {inWatchList || inWatchedList ? (
+        {inWatchList ? (
           <MovieCard movie={movie} />
+        ) : inWatchedList ? (
+          <>
+            <MovieCard movie={movie} />
+            <section>
+              <AddRating />
+              {/* <SearchButton title="save" /> */}
+            </section>
+          </>
         ) : (
           <>
             <MovieCard movie={movie} />

@@ -17,7 +17,7 @@ function WatchList() {
             movie={movie}
             buttonTitle="&#x2713;"
             key={movie.imdbID}
-            inWatchList={true}
+            inWatchList={true} //kan ta bort?
           />
         ))}
       </section>

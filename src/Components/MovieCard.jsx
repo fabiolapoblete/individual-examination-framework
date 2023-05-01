@@ -17,8 +17,17 @@ function MovieCard({ movie }) {
         ))}
       </section>
       <section>
-        <h4>Plot </h4>
-        <p className={style.movieCard__plot}>{movie.Plot}</p>
+        {movie.review ? (
+          <>
+            <h4>Review</h4>
+            <p className={style.movieCard__plot}>{movie.review}</p>
+          </>
+        ) : (
+          <>
+            <h4>Plot </h4>
+            <p className={style.movieCard__plot}>{movie.Plot}</p>
+          </>
+        )}
       </section>
       <section className={style.movieCard__rating}>
         <span style={{ fontSize: 25, color: "white" }}>&#9733;</span>
