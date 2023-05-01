@@ -5,7 +5,6 @@ import style from "./WatchList.module.scss";
 
 function WatchList() {
   const movies = useSelector((state) => state.watchList);
-  console.log(movies);
 
   return (
     <main className={style.watchList}>

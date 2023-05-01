@@ -22,7 +22,6 @@ function MovieItemContent({ movie }) {
 
 function MovieItem({ movie, buttonTitle }) {
   const dispatch = useDispatch();
-  console.log(movie, "movie");
 
   const state = useSelector((state) => {
     return state;
@@ -43,36 +42,60 @@ function MovieItem({ movie, buttonTitle }) {
   });
 
   return (
-    <>
+    <article className={style.movieContainer}>
+      <MovieItemContent movie={movie} />
       {inWatchList ? (
-        <article className={style.movieContainer}>
-          <MovieItemContent movie={movie} />
-          <RoundButton
-            title="&#x2713;"
-            action={() => {
-              dispatch(removeFromWatchList(movie));
-              dispatch(addToWatchedList(movie));
-              //remove from watchList
-            }}
-          />
-        </article>
-      ) : inWatchedList ? (
-        <article className={style.movieContainer}>
-          <MovieItemContent movie={movie} />
-        </article>
-      ) : (
-        <article className={style.movieContainer}>
-          <MovieItemContent movie={movie} />
-          <RoundButton
-            title={buttonTitle}
-            action={() => {
-              dispatch(addToWatchList(movie));
-            }}
-          />
-        </article>
+        <RoundButton
+          title="&#x2713;"
+          action={() => {
+            dispatch(removeFromWatchList(movie));
+            dispatch(addToWatchedList(movie));
+          }}
+        />
+      ) : inWatchedList ? null : (
+        <RoundButton
+          title={buttonTitle}
+          action={() => {
+            dispatch(addToWatchList(movie));
+          }}
+        />
       )}
-    </>
+    </article>
   );
+
+  // if (inWatchList) {
+  //   return (
+  //     <article className={style.movieContainer}>
+  //       <MovieItemContent movie={movie} />
+  //       <RoundButton
+  //         title="&#x2713;"
+  //         action={() => {
+  //           dispatch(removeFromWatchList(movie));
+  //           dispatch(addToWatchedList(movie));
+  //           //remove from watchList
+  //         }}
+  //       />
+  //     </article>
+  //   );
+  // }
+  // if (inWatchedList) {
+  //   return (
+  //     <article className={style.movieContainer}>
+  //       <MovieItemContent movie={movie} />
+  //     </article>
+  //   );
+  // }
+  // return (
+  //   <article className={style.movieContainer}>
+  //     <MovieItemContent movie={movie} />
+  //     <RoundButton
+  //       title={buttonTitle}
+  //       action={() => {
+  //         dispatch(addToWatchList(movie));
+  //       }}
+  //     />
+  //   </article>
+  // );
 }
 
 export default MovieItem;

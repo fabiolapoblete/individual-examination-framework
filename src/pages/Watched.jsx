@@ -5,8 +5,6 @@ import MovieItem from "../Components/MovieItem";
 function Watched() {
   const watchedMovies = useSelector((state) => state.watched);
 
-  console.log(watchedMovies, "watched");
-
   return (
     <main>
       <PageTitle title="Watched Movies" />

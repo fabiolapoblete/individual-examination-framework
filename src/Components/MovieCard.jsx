@@ -6,7 +6,6 @@ function MovieCard({ movie }) {
 
   if (genres) {
     genreList = genres.split(", ");
-    console.log(genreList);
   }
   return (
     <article className={style.movieCard}>

@@ -16,7 +16,6 @@ function SearchBar() {
     "http://www.omdbapi.com/?apikey=37fe945a&s=" + searchTerm + "&page=" + page;
 
   useEffect(() => {
-    console.log("fetch");
     searchTerm == "" || searchTerm == undefined
       ? null
       : fetch(API_URL)
@@ -24,12 +23,10 @@ function SearchBar() {
           .then((movieData) => {
             setSearchResult(movieData.Search);
           });
-    console.log(searchResult);
   }, [searchTerm, page]);
 
   useEffect(() => {
     if (searchResult) {
-      console.log("dispatch");
       dispatch(fillMovieList(searchResult));
     }
   }, [searchResult]);

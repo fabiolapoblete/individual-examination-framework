@@ -1,5 +1,5 @@
 import MovieCard from "../Components/MovieCard";
-import { useState, useEffect } from "react";
+import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useParams } from "react-router-dom";
 import SearchButton from "../Components/SearchButton";
@@ -8,15 +8,24 @@ import style from "./MoviePage.module.scss";
 import PageTitle from "../Components/PageTitle";
 // import InputBox from "../Components/InputBox";
 import AddRating from "./AddRating";
+import { addDetailData } from "../app/moviesSlice";
 
 function MoviePage() {
   const params = useParams();
 
-  const [movie, setMovie] = useState({});
-
   const state = useSelector((state) => {
     return state;
   });
+
+  const dispatch = useDispatch();
+
+  let movie = state.watchList.find(
+    (movieItem) => movieItem.imdbID == params.id
+  );
+
+  if (movie == undefined) {
+    movie = state.watched.find((movieItem) => movieItem.imdbID == params.id);
+  }
 
   const API_URL = "http://www.omdbapi.com/?apikey=37fe945a&i=" + params.id;
 
@@ -26,12 +35,9 @@ function MoviePage() {
       : fetch(API_URL)
           .then((response) => response.json())
           .then((movieData) => {
-            setMovie(movieData);
-            console.log(movieData);
+            dispatch(addDetailData(movieData));
           });
   }, []);
-
-  const dispatch = useDispatch();
 
   const inWatchList = state.watchList.some((movieItem) => {
     if (movie.imdbID === movieItem.imdbID) {
@@ -67,7 +73,7 @@ function MoviePage() {
           <>
             <MovieCard movie={movie} />
             <section>
-              <AddRating />
+              <AddRating movie={movie} />
               {/* <SearchButton title="save" /> */}
             </section>
           </>

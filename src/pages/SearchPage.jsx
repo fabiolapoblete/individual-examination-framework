@@ -10,12 +10,14 @@ function SearchPage() {
     return state;
   });
 
-  const [movies, setMovies] = useState([state.movies]);
+  // const [movies, setMovies] = useState([state.movies]);
+  // console.log(state.movies);
 
-  useEffect(() => {
-    setMovies(state.movies);
-    console.log(movies);
-  }, [state]);
+  // useEffect(() => {
+  //   setMovies(state.movies);
+  // }, [state]);
+
+  // console.log(movies);
 
   return (
     <main className={style.searchPage}>
@@ -23,9 +25,10 @@ function SearchPage() {
       <SearchBar />
 
       <section className={style.searchPage__movies}>
-        {movies.map((movie) => (
-          <MovieItem movie={movie} key={movie.imdbID} buttonTitle="+" />
-        ))}
+        {state.movies &&
+          state.movies.map((movie) => (
+            <MovieItem movie={movie} key={movie.imdbID} buttonTitle="+" />
+          ))}
       </section>
     </main>
   );
