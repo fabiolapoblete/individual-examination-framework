@@ -2,7 +2,6 @@ import PageTitle from "../Components/PageTitle";
 import MovieItem from "../Components/MovieItem";
 import SearchBar from "../Components/SearchBar";
 import { useSelector } from "react-redux";
-import { useEffect, useState } from "react";
 import style from "./SearchPage.module.scss";
 
 function SearchPage() {

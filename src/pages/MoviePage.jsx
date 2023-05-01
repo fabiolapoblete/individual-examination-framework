@@ -23,7 +23,7 @@ function MoviePage() {
     (movieItem) => movieItem.imdbID == params.id
   );
 
-  if (movie == undefined) {
+  if (movie === undefined) {
     movie = state.watched.find((movieItem) => movieItem.imdbID == params.id);
   }
 
@@ -36,6 +36,7 @@ function MoviePage() {
           .then((response) => response.json())
           .then((movieData) => {
             dispatch(addDetailData(movieData));
+            console.log(movieData);
           });
   }, []);
 
@@ -52,6 +53,10 @@ function MoviePage() {
     }
     return false;
   });
+
+  if (movie === undefined) {
+    return <h1>hej</h1>;
+  }
 
   return (
     <main className={style.moviePage}>
