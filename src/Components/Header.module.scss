@@ -1,6 +1,8 @@
+@import "../variables.scss";
+
 .header {
-    background-color: var(--secondary-color) ;
-    color: var(--primary-color);
+    background-color: $secondaryColor;
+    color: $primaryColor;
     padding: 1rem 1.5rem;
     position: sticky;
     top: 0;

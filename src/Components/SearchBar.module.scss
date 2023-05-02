@@ -1,3 +1,5 @@
+@import "../variables.scss";
+
 .searchBar {
     padding: 1rem 0;
     display: flex;
@@ -6,21 +8,19 @@
 
     &__input {
         background-color: transparent;
-        color: var(--text-color);
-        border: 1px solid var(--tertiary-color);
+        color: $textColor;
+        border: 1px solid $tertiaryColor;
         padding: 0.8rem 0.5rem;
         border-radius: 6px;
     }
 
     &__pagination {
-        display: flex;
-        justify-content: center;
-        align-items: center;
+        @include flex-center;
         gap: 0.5rem;
     }
 
     &__pagination__page {
-        color: var(--text-color);
+        color: $textColor;
         font-size: 20px;
         font-weight: 600;
     }

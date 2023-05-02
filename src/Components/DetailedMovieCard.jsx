@@ -1,4 +1,4 @@
-import style from "./MovieCard.module.scss";
+import style from "./DetailedMovieCard.module.scss";
 
 function DetailedMovieCard({ movie }) {
   const genres = movie.Genre;
@@ -29,7 +29,7 @@ function DetailedMovieCard({ movie }) {
         <p className={style.movieCard__plot}>{movie.Plot}</p>
       </section>
       <section className={style.movieCard__rating}>
-        <span style={{ fontSize: 25, color: "white" }}>&#9733;</span>
+        <span style={{ fontSize: 25, color: "#FFB92A" }}>&#9733;</span>
         <p>{movie.imdbRating} / 10</p>
       </section>
     </article>

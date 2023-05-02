@@ -1,16 +1,17 @@
+@import "../variables.scss";
+
 .footer {
     width: 100%;
-    background-color: var(--tertiary-color);
-    color: var(--primary-color);
+    background-color: $tertiaryColor;
+    color: $primaryColor;
     font-weight: 600;
     position: fixed;
     bottom: 0;
     padding: 0.5rem 1rem;
 
     &__navList {
-        display: flex;
+        @include flex-center;
         justify-content: space-around;
-        align-items: center;
         list-style: none;
         padding-left: 0;
     }

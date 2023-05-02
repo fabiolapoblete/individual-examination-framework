@@ -1,0 +1,14 @@
+@import "../variables.scss";
+
+.movieContainer {
+    position: relative;
+}
+
+.poster {
+    &__img {
+        width: 110px;
+        height: 170px;
+        border-radius: 8px;
+        @include box-shadowing;
+    }
+}

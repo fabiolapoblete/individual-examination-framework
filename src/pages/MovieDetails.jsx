@@ -3,9 +3,14 @@ import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useNavigate, useParams } from "react-router-dom";
 import RegularButton from "../Components/RegularButton";
-import { addToWatchList, removeFromWatchedList } from "../app/moviesSlice";
-import style from "./MoviePage.module.scss";
+import {
+  addToWatchList,
+  removeFromWatchList,
+  removeFromWatchedList,
+} from "../app/moviesSlice";
+import pageStyle from "./PageStyling.module.scss";
 import PageTitle from "../Components/PageTitle";
+import style from "./MovieDetails.module.scss";
 import Rating from "../Components/Rating";
 
 function MovieDetails() {
@@ -19,6 +24,8 @@ function MovieDetails() {
 
   const API_URL = "http://www.omdbapi.com/?apikey=37fe945a&i=" + params.id;
   const [movie, setMovie] = useState({});
+
+  let clickedAvatar = state.watched.find((movie) => movie.imdbID == params.id);
 
   useEffect(() => {
     fetch(API_URL)
@@ -46,9 +53,9 @@ function MovieDetails() {
       {movie.Response == "False" ? (
         navigate("error")
       ) : (
-        <main className={style.moviePage}>
+        <main className={pageStyle.page}>
           <PageTitle title={movie.Title} />
-          <section className={style.moviePage__subheader}>
+          <section className={style.subheader}>
             <p>{movie.Language}</p>
 
             {movie.Type == "movie" ? (
@@ -56,18 +63,28 @@ function MovieDetails() {
                 <span>|</span> <p>{movie.Runtime}</p>{" "}
               </>
             ) : null}
-
-            <span>|</span>
-            <p>
-              {movie.Type} from {movie.Year}
-            </p>
+            <>
+              <span>|</span>
+              <p>
+                {movie.Type} from {movie.Year}
+              </p>
+            </>
           </section>
-          <section className={style.moviePage__movieCard}>
+          <section className={style.movieCard}>
             <DetailedMovieCard movie={movie} />
-            {inWatchList ? null : inWatchedList ? (
+            {inWatchList ? (
+              <section>
+                <RegularButton
+                  title="Remove from Watch List"
+                  action={() => {
+                    dispatch(removeFromWatchList(movie));
+                  }}
+                />
+              </section>
+            ) : inWatchedList ? (
               <>
                 <section>
-                  <Rating movie={movie} />
+                  <Rating movie={movie} myRating={clickedAvatar.rating} />
                 </section>
                 <section>
                   <RegularButton

@@ -1,9 +1,13 @@
-.searchPage {
+@import "../variables.scss";
+
+.page {
     padding: 1rem;
+    color: $textColor;
 
     &__movies {
         display: flex;
         flex-wrap: wrap;
         gap: 1.5rem;
+        margin-top: 1rem;
     }
 }

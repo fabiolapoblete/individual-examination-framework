@@ -9,7 +9,7 @@ import MovieDetails from "./pages/MovieDetails";
 import Header from "./Components/Header";
 import Footer from "./Components/Footer";
 //Styling
-import "./styling/App.css";
+import "./App.scss";
 
 function App() {
   return (

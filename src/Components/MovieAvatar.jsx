@@ -10,7 +10,7 @@ import {
 //Components
 import RoundButton from "./RoundButton";
 //Styling
-import style from "./MovieItem.module.scss";
+import style from "./MovieAvatar.module.scss";
 
 function MoviePoster({ movie }) {
   //Navigation to MovieDetails page on click
