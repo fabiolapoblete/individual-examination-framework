@@ -9,7 +9,7 @@ function SearchBar() {
   let inputValue = "";
 
   const [searchResult, setSearchResult] = useState([]);
-  const [searchTerm, setSearchTerm] = useState("Emma");
+  const [searchTerm, setSearchTerm] = useState("");
   const [page, setPage] = useState(1);
 
   const API_URL =
@@ -17,7 +17,12 @@ function SearchBar() {
 
   useEffect(() => {
     searchTerm == "" || searchTerm == undefined
-      ? null
+      ? fetch("../public/recommendedMovies.json")
+          .then((response) => response.json())
+          .then((recommendedMovies) => {
+            console.log(recommendedMovies);
+            dispatch(fillMovieList(recommendedMovies));
+          })
       : fetch(API_URL)
           .then((response) => response.json())
           .then((movieData) => {

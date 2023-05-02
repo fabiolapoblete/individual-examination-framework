@@ -24,7 +24,7 @@ function MoviePage() {
   );
 
   if (movie === undefined) {
-    movie = state.watched.find((movieItem) => movieItem.imdbID == params.id);
+    movie = state.movies.find((movieItem) => movieItem.imdbID == params.id);
   }
 
   const API_URL = "http://www.omdbapi.com/?apikey=37fe945a&i=" + params.id;

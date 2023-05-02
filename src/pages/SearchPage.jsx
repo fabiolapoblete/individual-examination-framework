@@ -9,6 +9,8 @@ function SearchPage() {
     return state;
   });
 
+  console.log(state.movies);
+
   // const [movies, setMovies] = useState([state.movies]);
   // console.log(state.movies);
 
