@@ -18,7 +18,15 @@ function MoviePoster({ movie }) {
     <>
       <Link to={"/movie/" + movie.imdbID}>
         <figure className={style.poster}>
-          <img className={style.poster__img} src={movie.Poster} alt="" />
+          <img
+            className={style.poster__img}
+            src={
+              movie.Poster == "N/A"
+                ? "https://images.unsplash.com/photo-1598899134739-24c46f58b8c0?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=856&q=80}"
+                : movie.Poster
+            }
+            alt=""
+          />
         </figure>
       </Link>
     </>

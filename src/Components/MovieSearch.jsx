@@ -28,19 +28,22 @@ function MovieSearch() {
       ? fetch("/recommendedMovies.json")
           .then((response) => response.json())
           .then((recommendedMovies) => {
-            console.log(recommendedMovies);
             dispatch(fillMovieList(recommendedMovies));
           })
       : fetch(API_URL)
           .then((response) => response.json())
           .then((movieData) => {
+            console.log(movieData);
             setSearchResult(movieData.Search);
+            console.log(searchResult);
           });
   }, [searchTerm, page]);
 
   useEffect(() => {
     if (searchResult) {
       dispatch(fillMovieList(searchResult));
+    } else if (searchResult == undefined) {
+      dispatch(fillMovieList([]));
     }
   }, [searchResult]);
 

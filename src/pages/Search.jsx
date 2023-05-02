@@ -17,10 +17,13 @@ function Search() {
       <MovieSearch />
 
       <section className={style.searchPage__movies}>
-        {state.movies &&
+        {state.movies.length > 0 ? (
           state.movies.map((movie) => (
             <MovieAvatar movie={movie} key={movie.imdbID} buttonTitle="+" />
-          ))}
+          ))
+        ) : (
+          <p>No search results, try again!</p>
+        )}
       </section>
     </main>
   );
