@@ -1,6 +1,6 @@
 import style from "./MovieCard.module.scss";
 
-function MovieCard({ movie }) {
+function DetailedMovieCard({ movie }) {
   const genres = movie.Genre;
   let genreList = [];
 
@@ -36,4 +36,4 @@ function MovieCard({ movie }) {
   );
 }
 
-export default MovieCard;
+export default DetailedMovieCard;

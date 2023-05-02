@@ -1,6 +1,6 @@
 import { useSelector } from "react-redux";
 import PageTitle from "../Components/PageTitle";
-import MovieItem from "../Components/MovieItem";
+import MovieAvatar from "../Components/MovieAvatar";
 import style from "./WatchList.module.scss";
 
 function WatchList() {
@@ -12,7 +12,7 @@ function WatchList() {
       {/*Någon typ av filterfunktion*/}
       <section className={style.watchList__movies}>
         {movies.map((movie) => (
-          <MovieItem
+          <MovieAvatar
             movie={movie}
             buttonTitle="&#x2713;"
             key={movie.imdbID}

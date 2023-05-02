@@ -1,5 +1,5 @@
 import { useState } from "react";
-import SearchButton from "../Components/SearchButton";
+import RegularButton from "../Components/RegularButton";
 import { useDispatch } from "react-redux";
 import { useParams } from "react-router-dom";
 import { addRating } from "../app/moviesSlice";
@@ -23,7 +23,7 @@ function AddRating({ movie }) {
   return (
     <>
       <section>
-        <SearchButton
+        <RegularButton
           title="-"
           disabled={rating == 0}
           action={() => {
@@ -31,7 +31,7 @@ function AddRating({ movie }) {
           }}
         />
         <p>{rating} / 10</p>
-        <SearchButton
+        <RegularButton
           title="+"
           disabled={rating == 10}
           action={() => {
@@ -39,7 +39,7 @@ function AddRating({ movie }) {
           }}
         />
       </section>
-      <SearchButton title="save" action={handleRating} />
+      <RegularButton title="save" action={handleRating} />
     </>
   );
 }

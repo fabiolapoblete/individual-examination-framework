@@ -1,8 +1,8 @@
-import MovieCard from "../Components/MovieCard";
+import DetailedMovieCard from "../Components/DetailedMovieCard";
 import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useParams } from "react-router-dom";
-import SearchButton from "../Components/SearchButton";
+import RegularButton from "../Components/RegularButton";
 import { addToWatchList } from "../app/moviesSlice";
 import style from "./MoviePage.module.scss";
 import PageTitle from "../Components/PageTitle";
@@ -73,10 +73,10 @@ function MoviePage() {
 
       <section className={style.moviePage__movieCard}>
         {inWatchList ? (
-          <MovieCard movie={movie} />
+          <DetailedMovieCard movie={movie} />
         ) : inWatchedList ? (
           <>
-            <MovieCard movie={movie} />
+            <DetailedMovieCard movie={movie} />
             <section>
               <AddRating movie={movie} />
               {/* <SearchButton title="save" /> */}
@@ -84,8 +84,8 @@ function MoviePage() {
           </>
         ) : (
           <>
-            <MovieCard movie={movie} />
-            <SearchButton
+            <DetailedMovieCard movie={movie} />
+            <RegularButton
               title="Add to Watch List"
               action={() => {
                 dispatch(addToWatchList(movie));
