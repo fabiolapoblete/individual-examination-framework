@@ -33,19 +33,33 @@ function MovieAvatar({ movie, buttonTitle }) {
   });
 
   //Check to see in which list the movie is in to render different buttons
-  const inList = (list) => {
-    list.some((movieItem) => {
-      if (movie.imdbID === movieItem.imdbID) {
-        return true;
-      }
-      return false;
-    });
-  };
+  // const inList = (list) => {
+  //   list.some((movieItem) => {
+  //     if (movie.imdbID === movieItem.imdbID) {
+  //       return true;
+  //     }
+  //     return false;
+  //   });
+  // };
+
+  const inWatchList = state.watchList.some((movieItem) => {
+    if (movie.imdbID === movieItem.imdbID) {
+      return true;
+    }
+    return false;
+  });
+
+  const inWatchedList = state.watched.some((movieItem) => {
+    if (movie.imdbID === movieItem.imdbID) {
+      return true;
+    }
+    return false;
+  });
 
   return (
     <article className={style.movieContainer}>
       <MoviePoster movie={movie} />
-      {inList(state.watchList) ? (
+      {inWatchList ? (
         <RoundButton
           title="&#x2713;"
           action={() => {
@@ -53,7 +67,7 @@ function MovieAvatar({ movie, buttonTitle }) {
             dispatch(addToWatchedList(movie));
           }}
         />
-      ) : inList(state.watched) ? null : (
+      ) : inWatchedList ? null : (
         <RoundButton
           title={buttonTitle}
           action={() => {

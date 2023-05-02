@@ -128,12 +128,6 @@ export const movieSlice = createSlice({
 
       movie.rating = action.payload.rating;
     },
-    addDetailData: (state, action) => {
-      let index = state.watched.findIndex(
-        (movie) => movie.imdbID == action.payload.imdbID
-      );
-      state.watched[index] = action.payload;
-    },
   },
 });
 

@@ -7,6 +7,7 @@ function DetailedMovieCard({ movie }) {
   if (genres) {
     genreList = genres.split(", ");
   }
+
   return (
     <article className={style.movieCard}>
       <img className={style.movieCard__img} src={movie.Poster} alt="" />
@@ -16,17 +17,8 @@ function DetailedMovieCard({ movie }) {
         ))}
       </section>
       <section>
-        {movie.review ? (
-          <>
-            <h4>Review</h4>
-            <p className={style.movieCard__plot}>{movie.review}</p>
-          </>
-        ) : (
-          <>
-            <h4>Plot </h4>
-            <p className={style.movieCard__plot}>{movie.Plot}</p>
-          </>
-        )}
+        <h4>Plot </h4>
+        <p className={style.movieCard__plot}>{movie.Plot}</p>
       </section>
       <section className={style.movieCard__rating}>
         <span style={{ fontSize: 25, color: "white" }}>&#9733;</span>

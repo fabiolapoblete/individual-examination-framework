@@ -1,10 +1,10 @@
 import { useState } from "react";
-import RegularButton from "../Components/RegularButton";
+import RegularButton from "./RegularButton";
 import { useDispatch } from "react-redux";
 import { useParams } from "react-router-dom";
 import { addRating } from "../app/moviesSlice";
 
-function AddRating({ movie }) {
+function Rating({ movie }) {
   const [rating, setRating] = useState(movie.rating ? movie.rating : 0);
 
   const dispatch = useDispatch();
@@ -44,4 +44,4 @@ function AddRating({ movie }) {
   );
 }
 
-export default AddRating;
+export default Rating;

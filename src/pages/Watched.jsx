@@ -3,14 +3,16 @@ import PageTitle from "../Components/PageTitle";
 import MovieAvatar from "../Components/MovieAvatar";
 
 function Watched() {
-  const watchedMovies = useSelector((state) => state.watched);
+  const state = useSelector((state) => {
+    return state;
+  });
 
   return (
     <main>
       <PageTitle title="Watched Movies" />
       {
         <section>
-          {watchedMovies.map((movie) => (
+          {state.watched.map((movie) => (
             <>
               <MovieAvatar movie={movie} buttonTitle="-" key={movie.imdbID} />
               {movie.rating ? (

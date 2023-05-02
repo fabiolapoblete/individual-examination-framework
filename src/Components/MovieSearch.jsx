@@ -12,7 +12,6 @@ function MovieSearch() {
   const [searchResult, setSearchResult] = useState([]);
   const [searchTerm, setSearchTerm] = useState("");
   const [page, setPage] = useState(1);
-  const [disabled, setDisabled] = useState(false);
 
   const dispatch = useDispatch();
 
@@ -24,7 +23,6 @@ function MovieSearch() {
   //If there is no search term recommended movies will be shown
   //Else an API fetch is made with set search term.
   //If there is a search result the result is added to the movie list to be displayed
-
   useEffect(() => {
     searchTerm == "" || searchTerm == undefined
       ? fetch("/recommendedMovies.json")
@@ -45,11 +43,6 @@ function MovieSearch() {
       dispatch(fillMovieList(searchResult));
     }
   }, [searchResult]);
-
-  //State handeling for disabeling pagination buttons
-  useEffect(() => {
-    page == 1 ? setDisabled(true) : setDisabled(false);
-  }, [page]);
 
   return (
     <section className={style.searchBar}>
@@ -72,7 +65,7 @@ function MovieSearch() {
       <section className={style.searchBar__pagination}>
         <RegularButton
           title="&lt;"
-          disabled={disabled}
+          disabled={page == 1}
           action={() => {
             setPage(page - 1);
           }}
