@@ -5,7 +5,7 @@ import { Link } from "react-router-dom";
 import {
   addToWatchList,
   removeFromWatchList,
-  addToWatchedList,
+  addToWatchedMovies,
 } from "../app/moviesSlice";
 //Components
 import RoundButton from "./RoundButton";
@@ -57,7 +57,7 @@ function MovieAvatar({ movie, buttonTitle }) {
     return false;
   });
 
-  const inWatchedList = state.watched.some((movieItem) => {
+  const inWatchedMovies = state.watchedMovies.some((movieItem) => {
     if (movie.imdbID === movieItem.imdbID) {
       return true;
     }
@@ -72,10 +72,10 @@ function MovieAvatar({ movie, buttonTitle }) {
           title="&#x2713;"
           action={() => {
             dispatch(removeFromWatchList(movie));
-            dispatch(addToWatchedList(movie));
+            dispatch(addToWatchedMovies(movie));
           }}
         />
-      ) : inWatchedList ? null : (
+      ) : inWatchedMovies ? null : (
         <RoundButton
           title={buttonTitle}
           action={() => {

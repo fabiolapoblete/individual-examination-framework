@@ -6,7 +6,7 @@ import RegularButton from "../Components/RegularButton";
 import {
   addToWatchList,
   removeFromWatchList,
-  removeFromWatchedList,
+  removeFromWatchedMovies,
 } from "../app/moviesSlice";
 import pageStyle from "./PageStyling.module.scss";
 import PageTitle from "../Components/PageTitle";
@@ -25,7 +25,9 @@ function MovieDetails() {
   const API_URL = "http://www.omdbapi.com/?apikey=37fe945a&i=" + params.id;
   const [movie, setMovie] = useState({});
 
-  let clickedAvatar = state.watched.find((movie) => movie.imdbID == params.id);
+  let clickedAvatar = state.watchedMovies.find(
+    (movie) => movie.imdbID == params.id
+  );
 
   useEffect(() => {
     fetch(API_URL)
@@ -41,7 +43,7 @@ function MovieDetails() {
     }
     return false;
   });
-  const inWatchedList = state.watched.some((movieItem) => {
+  const inWatchedMovies = state.watchedMovies.some((movieItem) => {
     if (movie.imdbID === movieItem.imdbID) {
       return true;
     }
@@ -81,7 +83,7 @@ function MovieDetails() {
                   }}
                 />
               </section>
-            ) : inWatchedList ? (
+            ) : inWatchedMovies ? (
               <>
                 <section>
                   <Rating movie={movie} myRating={clickedAvatar.rating} />
@@ -90,7 +92,7 @@ function MovieDetails() {
                   <RegularButton
                     title="Remove from Watched"
                     action={() => {
-                      dispatch(removeFromWatchedList(movie));
+                      dispatch(removeFromWatchedMovies(movie));
                     }}
                   />
                 </section>

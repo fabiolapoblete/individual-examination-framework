@@ -13,7 +13,7 @@ function Watched() {
       <PageTitle title="Watched Movies" />
       {
         <section className={style.page__movies}>
-          {state.watched.map((movie) => (
+          {state.watchedMovies.map((movie) => (
             <section key={movie.imdbID}>
               {" "}
               {/* Lägg till en section här */}

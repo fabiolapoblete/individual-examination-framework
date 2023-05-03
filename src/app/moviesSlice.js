@@ -98,7 +98,7 @@ const initialState = {
       Response: "True",
     },
   ],
-  watched: [],
+  watchedMovies: [],
   movies: [],
 };
 
@@ -118,17 +118,17 @@ export const movieSlice = createSlice({
       );
       state.watchList.splice(id, 1);
     },
-    addToWatchedList: (state, action) => {
-      state.watched.push(action.payload);
+    addToWatchedMovies: (state, action) => {
+      state.watchedMovies.push(action.payload);
     },
-    removeFromWatchedList: (state, action) => {
-      let id = state.watched.findIndex(
+    removeFromWatchedMovies: (state, action) => {
+      let id = state.watchedMovies.findIndex(
         (movie) => movie.imdbID == action.payload.imdbID
       );
-      state.watched.splice(id, 1);
+      state.watchedMovies.splice(id, 1);
     },
     addRating: (state, action) => {
-      let movie = state.watched.find(
+      let movie = state.watchedMovies.find(
         (movie) => movie.imdbID == action.payload.id
       );
 
@@ -141,8 +141,8 @@ export const {
   fillMovieList,
   addToWatchList,
   removeFromWatchList,
-  addToWatchedList,
-  removeFromWatchedList,
+  addToWatchedMovies,
+  removeFromWatchedMovies,
   addRating,
 } = movieSlice.actions;
 
