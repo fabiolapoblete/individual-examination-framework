@@ -14,15 +14,19 @@ function Watched() {
       {
         <section className={style.page__movies}>
           {state.watched.map((movie) => (
-            <>
-              <MovieAvatar movie={movie} buttonTitle="-" key={movie.imdbID} />
+            <section key={movie.imdbID}>
+              {" "}
+              {/* Lägg till en section här */}
+              <MovieAvatar movie={movie} buttonTitle="-" />
               {movie.rating ? (
-                <>
-                  <p>{movie.rating}</p>
-                  <span style={{ fontSize: 25, color: "white" }}>&#9733;</span>
-                </>
+                <section className={style.page__movies__rating}>
+                  <p>{movie.rating} / 10</p>
+                  <span style={{ fontSize: 25, color: "#FFB92A" }}>
+                    &#9733;
+                  </span>
+                </section>
               ) : null}
-            </>
+            </section>
           ))}
         </section>
       }

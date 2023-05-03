@@ -6,7 +6,8 @@ import { addRating } from "../app/moviesSlice";
 import style from "./Rating.module.scss";
 
 function Rating({ myRating }) {
-  const [rating, setRating] = useState(myRating ? myRating : 0);
+  const [rating, setRating] = useState(myRating ? myRating : null);
+  const [buttonTitle, setButtonTitle] = useState(myRating ? "edit" : "save");
 
   const dispatch = useDispatch();
 
@@ -32,6 +33,7 @@ function Rating({ myRating }) {
             disabled={rating == 0}
             action={() => {
               setRating(rating - 1);
+              setButtonTitle("save");
             }}
           />
           <p className={style.ratingBox}>{rating} / 10</p>
@@ -40,10 +42,11 @@ function Rating({ myRating }) {
             disabled={rating == 10}
             action={() => {
               setRating(rating + 1);
+              setButtonTitle("save");
             }}
           />
           <RegularButton
-            title={rating > 0 ? "edit" : "save"}
+            title={buttonTitle}
             action={() => {
               handleRating();
               navigate("/watched");
