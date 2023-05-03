@@ -1,29 +1,31 @@
 @import "../variables.scss";
 
 .ratingContainer {
-    margin-bottom: 2rem;;
-}
-.rating {
-    display: flex;
-    align-items: center;
-    gap: 0.8rem;
+    margin-bottom: 2rem;
 
+    &__setRating {
+        display: flex;
+        align-items: center;
+        gap: 0.8rem;
+        margin-top: 0.5rem;
 
-    button {
-        padding: 0.5rem;
-        margin:0;
-        align-self: flex-end;
+        button {
+            align-self: flex-end;
+            padding: 0.5rem;
+            margin:0;
+        }
     }
-}
 
-.ratingBox {
-    font-size: 16px;
-    font-weight: 600;
-    border: 2px solid $primaryColor;
-    background-color: $tertiaryColor;
-    color: $primaryColor;
-    width: 20%;
-    padding: 0.2rem;
-    border-radius: 6px;
-    text-align: center;
+    &__displayRating {
+        width: 20%;
+        background-color: $tertiaryColor;
+        color: $primaryColor;
+        font-size: 1rem;
+        font-weight: 600;
+        text-align: center;
+        border: 2px solid $primaryColor;
+        border-radius: 6px;
+        padding: 0.2rem;
+    }
+
 }

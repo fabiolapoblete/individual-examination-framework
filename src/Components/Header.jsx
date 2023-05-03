@@ -1,3 +1,4 @@
+/*Styling*/
 import style from "./Header.module.scss";
 
 function Header() {

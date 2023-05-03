@@ -1,14 +1,12 @@
 @import "../variables.scss";
 
-.movieContainer {
+.movieAvatar {
     position: relative;
-}
 
-.poster {
-    &__img {
+    &__poster {
         width: 110px;
         height: 170px;
         border-radius: 8px;
-        @include box-shadowing;
+        @include box-shadowing; 
     }
 }

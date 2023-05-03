@@ -1,20 +1,19 @@
 @import "../variables.scss";
 
-.movieCard {
-    // background-color: $textColor;
+.detailedMovieCard {
     background-color: $tertiaryColor;
     color: $primaryColor;
     font-weight: 500;
-    border-radius: 6px;   
     @include flex-center;
     flex-direction:column;
     gap: 1rem;
+    border-radius: 6px;   
     padding: 1.5rem;
     margin: 1rem 0;
 
     &__img {
-        border-radius: 6px;
         width: 60%;
+        border-radius: 6px;
         @include box-shadowing;
     }
 
@@ -28,10 +27,10 @@
     }
 
     &__rating {
-        @include flex-center;
         font-size: 1rem;
+        font-weight: 600;
+        @include flex-center;
         gap: 0.3rem;
         align-self: flex-end;
-        font-weight: 600;
     }
 }

@@ -1,30 +1,36 @@
-//Libraries
+/*Libraries*/
 import { useEffect, useState } from "react";
 import { useDispatch } from "react-redux";
-//Reducers
+/*Reducers*/
 import { fillSearchResultList } from "../app/moviesSlice";
-//Components
+/*Components*/
 import RegularButton from "./RegularButton";
-//Styling
+/*Styling*/
 import style from "./SearchBar.module.scss";
 
 function MovieSearch() {
+  const dispatch = useDispatch();
+
+  /* Declaration of states */
   const [searchResult, setSearchResult] = useState([]);
   const [searchTerm, setSearchTerm] = useState("");
   const [page, setPage] = useState(1);
+  /**
 
-  const dispatch = useDispatch();
-
+  /* Declaration of variables */
   const API_URL =
     "http://www.omdbapi.com/?apikey=37fe945a&s=" + searchTerm + "&page=" + page;
 
   let inputValue = "";
+  /**/
 
-  //If there is no search term recommended movies will be shown
-  //Else an API fetch is made with set search term.
-  //If there is a search result the result is added to the movie list to be displayed
+  /* 
+  If there is no search term, recommended movies will be shown.
+  If a search is made a fetch to the API is made with set search term.
+  If there is a search result the state is updated and movies are displayed.
+  */
   useEffect(() => {
-    searchTerm == "" || searchTerm == undefined
+    searchTerm == ""
       ? fetch("/recommendedMovies.json")
           .then((response) => response.json())
           .then((recommendedMovies) => {
@@ -46,6 +52,7 @@ function MovieSearch() {
       dispatch(fillSearchResultList([]));
     }
   }, [searchResult]);
+  /**/
 
   return (
     <section className={style.searchBar}>
@@ -54,7 +61,6 @@ function MovieSearch() {
         onChange={(e) => {
           inputValue = e.target.value;
         }}
-        id="search"
         type="text"
         placeholder="search..."
       />
@@ -73,7 +79,7 @@ function MovieSearch() {
             setPage(page - 1);
           }}
         />
-        <p className={style.searchBar__pagination__page}>{page}</p>
+        <p className={style.searchBar__pagination__pageNumber}>{page}</p>
         <RegularButton
           title="&gt;"
           action={() => {
