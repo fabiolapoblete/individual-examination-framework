@@ -1,34 +1,40 @@
-import DetailedMovieCard from "../Components/DetailedMovieCard";
+/*Libraries*/
 import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useNavigate, useParams } from "react-router-dom";
-import RegularButton from "../Components/RegularButton";
+/*Reducers*/
 import {
   addToWatchList,
   removeFromWatchList,
   removeFromWatchedMovies,
 } from "../app/moviesSlice";
-import pageStyle from "./PageStyling.module.scss";
+/*Components*/
 import PageTitle from "../Components/PageTitle";
-import style from "./MovieDetails.module.scss";
+import DetailedMovieCard from "../Components/DetailedMovieCard";
 import Rating from "../Components/Rating";
+import RegularButton from "../Components/RegularButton";
+/*Styling*/
+import pageStyle from "./PageStyling.module.scss";
+import style from "./MovieDetails.module.scss";
 
 function MovieDetails() {
-  const params = useParams();
   const dispatch = useDispatch();
   const navigate = useNavigate();
+  const params = useParams();
 
+  /* Get state */
   const state = useSelector((state) => {
     return state;
   });
+  /**/
 
-  const API_URL = "http://www.omdbapi.com/?apikey=37fe945a&i=" + params.id;
   const [movie, setMovie] = useState({});
 
-  let clickedAvatar = state.watchedMovies.find(
-    (movie) => movie.imdbID == params.id
-  );
+  /* Declaration of API_URL using id from page url */
+  const API_URL = "http://www.omdbapi.com/?apikey=37fe945a&i=" + params.id;
+  /**/
 
+  /* In order to get full details about a movie, a specific search has to be made. Hence another fetch towards API using id of current movie */
   useEffect(() => {
     fetch(API_URL)
       .then((response) => response.json())
@@ -36,19 +42,32 @@ function MovieDetails() {
         setMovie(movieData);
       });
   }, []);
+  /**/
 
+  /* Fetched movie details are not stored in store.
+  In the Rating component rating can be set and added as a property to the movie stored in the store.
+  In order to show the rating when switching pages "clickedAvatar.rating", which is the actual movie in store,
+  is passed as a prop to the Rating component */
+  let clickedAvatar = state.watchedMovies.find(
+    (movie) => movie.imdbID == params.id
+  );
+  /**/
+
+  /* Check to see in which list the movie is in in order to render buttons accordingly */
   const inWatchList = state.watchList.some((movieItem) => {
     if (movie.imdbID === movieItem.imdbID) {
       return true;
     }
     return false;
   });
+
   const inWatchedMovies = state.watchedMovies.some((movieItem) => {
     if (movie.imdbID === movieItem.imdbID) {
       return true;
     }
     return false;
   });
+  /*PERHAPS POSSIBLE TO REFRACTOR*/
 
   return (
     <>
@@ -57,6 +76,7 @@ function MovieDetails() {
       ) : (
         <main className={pageStyle.page}>
           <PageTitle title={movie.Title} />
+
           <section className={style.subheader}>
             <p>{movie.Language}</p>
 
@@ -65,6 +85,7 @@ function MovieDetails() {
                 <span>|</span> <p>{movie.Runtime}</p>{" "}
               </>
             ) : null}
+
             <>
               <span>|</span>
               <p>
@@ -72,8 +93,10 @@ function MovieDetails() {
               </p>
             </>
           </section>
+
           <section className={style.movieCard}>
             <DetailedMovieCard movie={movie} />
+
             {inWatchList ? (
               <section>
                 <RegularButton

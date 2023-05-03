@@ -1,13 +1,17 @@
+/*Libraries*/
 import { useSelector } from "react-redux";
+/*Components*/
 import PageTitle from "../Components/PageTitle";
 import MovieAvatar from "../Components/MovieAvatar";
-// import style from "./WatchList.module.scss";
+/*Styling*/
 import style from "./PageStyling.module.scss";
 
 function MyList() {
+  /* Get state */
   const state = useSelector((state) => {
     return state;
   });
+  /**/
 
   return (
     <main className={style.page}>

@@ -1,9 +1,13 @@
+/*Components*/
+import PageTitle from "../Components/PageTitle";
+/*Styling*/
 import style from "./PageStyling.module.scss";
 
 function PageNotFound() {
   return (
     <main className={style.page}>
-      <h1>Something went wrong</h1>
+      <PageTitle title="Something went wrong" />
+      <p>Navigate back through the bottom navigation</p>
     </main>
   );
 }

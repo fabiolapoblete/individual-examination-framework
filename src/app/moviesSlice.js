@@ -1,5 +1,6 @@
 import { createSlice } from "@reduxjs/toolkit";
 
+/* Declares the initial states*/
 const initialState = {
   watchList: [
     {
@@ -102,36 +103,42 @@ const initialState = {
   searchResultList: [],
 };
 
+/* Creates slice called movies, with multiple reducers */
 export const movieSlice = createSlice({
   name: "movies",
   initialState,
   reducers: {
+    /*This reducer replaces the searchResultList with the received payload (list of movies)*/
     fillSearchResultList: (state, action) => {
       state.searchResultList = action.payload;
     },
+    /* Adds a movie to the watchList */
     addToWatchList: (state, action) => {
       state.watchList.push(action.payload);
     },
+    /* Removes a movie from the watchList using the movies id to find the correct movie in watchList */
     removeFromWatchList: (state, action) => {
-      let id = state.watchList.findIndex(
+      let index = state.watchList.findIndex(
         (movie) => movie.imdbID == action.payload.imdbID
       );
-      state.watchList.splice(id, 1);
+      state.watchList.splice(index, 1);
     },
+    /* Adds a movie to watchedMovies */
     addToWatchedMovies: (state, action) => {
       state.watchedMovies.push(action.payload);
     },
+    /* Removes a movie from watchedMovies using the movies id to find the correct movie in watchedMovies */
     removeFromWatchedMovies: (state, action) => {
-      let id = state.watchedMovies.findIndex(
+      let index = state.watchedMovies.findIndex(
         (movie) => movie.imdbID == action.payload.imdbID
       );
-      state.watchedMovies.splice(id, 1);
+      state.watchedMovies.splice(index, 1);
     },
+    /* Uses an id to find the correct movie in watchedMovies. A new propery, rating, is added and given a value*/
     addRating: (state, action) => {
       let movie = state.watchedMovies.find(
         (movie) => movie.imdbID == action.payload.id
       );
-
       movie.rating = action.payload.rating;
     },
   },

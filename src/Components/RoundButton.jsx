@@ -1,3 +1,4 @@
+/*Styling*/
 import style from "./Buttons.module.scss";
 
 function RoundButton({ title, action }) {

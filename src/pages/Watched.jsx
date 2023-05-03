@@ -1,12 +1,17 @@
+/*Libraries*/
 import { useSelector } from "react-redux";
+/*Components*/
 import PageTitle from "../Components/PageTitle";
 import MovieAvatar from "../Components/MovieAvatar";
+/*Styling*/
 import style from "./PageStyling.module.scss";
 
 function Watched() {
+  /* Get state*/
   const state = useSelector((state) => {
     return state;
   });
+  /**/
 
   return (
     <main className={style.page}>
@@ -15,8 +20,6 @@ function Watched() {
         <section className={style.page__movies}>
           {state.watchedMovies.map((movie) => (
             <section key={movie.imdbID}>
-              {" "}
-              {/* Lägg till en section här */}
               <MovieAvatar movie={movie} buttonTitle="-" />
               {movie.rating ? (
                 <section className={style.page__movies__rating}>

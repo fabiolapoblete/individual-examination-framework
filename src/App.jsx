@@ -1,14 +1,14 @@
-//Libraries
+/*Libraries*/
 import { BrowserRouter, Route, Routes, Navigate } from "react-router-dom";
-//Components
+/*Componens*/
+import Header from "./Components/Header";
 import MyList from "./pages/MyList";
 import Watched from "./pages/Watched";
 import Search from "./pages/Search";
-import PageNotFound from "./pages/PageNotFound";
 import MovieDetails from "./pages/MovieDetails";
-import Header from "./Components/Header";
 import Footer from "./Components/Footer";
-//Styling
+import PageNotFound from "./pages/PageNotFound";
+/*Styling*/
 import "./App.scss";
 
 function App() {
