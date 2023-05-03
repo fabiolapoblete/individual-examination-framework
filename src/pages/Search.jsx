@@ -10,7 +10,7 @@ function Search() {
     return state;
   });
 
-  console.log(state.movies);
+  console.log(state.searchResultList);
 
   return (
     <main className={style.page}>
@@ -18,8 +18,8 @@ function Search() {
       <MovieSearch />
 
       <section className={style.page__movies}>
-        {state.movies.length > 0 ? (
-          state.movies.map((movie) => (
+        {state.searchResultList.length > 0 ? (
+          state.searchResultList.map((movie) => (
             <MovieAvatar movie={movie} key={movie.imdbID} buttonTitle="+" />
           ))
         ) : (

@@ -99,15 +99,15 @@ const initialState = {
     },
   ],
   watchedMovies: [],
-  movies: [],
+  searchResultList: [],
 };
 
 export const movieSlice = createSlice({
   name: "movies",
   initialState,
   reducers: {
-    fillMovieList: (state, action) => {
-      state.movies = action.payload;
+    fillSearchResultList: (state, action) => {
+      state.searchResultList = action.payload;
     },
     addToWatchList: (state, action) => {
       state.watchList.push(action.payload);
@@ -138,7 +138,7 @@ export const movieSlice = createSlice({
 });
 
 export const {
-  fillMovieList,
+  fillSearchResultList,
   addToWatchList,
   removeFromWatchList,
   addToWatchedMovies,

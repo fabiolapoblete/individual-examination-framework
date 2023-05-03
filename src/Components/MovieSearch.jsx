@@ -2,7 +2,7 @@
 import { useEffect, useState } from "react";
 import { useDispatch } from "react-redux";
 //Reducers
-import { fillMovieList } from "../app/moviesSlice";
+import { fillSearchResultList } from "../app/moviesSlice";
 //Components
 import RegularButton from "./RegularButton";
 //Styling
@@ -28,7 +28,7 @@ function MovieSearch() {
       ? fetch("/recommendedMovies.json")
           .then((response) => response.json())
           .then((recommendedMovies) => {
-            dispatch(fillMovieList(recommendedMovies));
+            dispatch(fillSearchResultList(recommendedMovies));
           })
       : fetch(API_URL)
           .then((response) => response.json())
@@ -41,9 +41,9 @@ function MovieSearch() {
 
   useEffect(() => {
     if (searchResult) {
-      dispatch(fillMovieList(searchResult));
+      dispatch(fillSearchResultList(searchResult));
     } else if (searchResult == undefined) {
-      dispatch(fillMovieList([]));
+      dispatch(fillSearchResultList([]));
     }
   }, [searchResult]);
 
