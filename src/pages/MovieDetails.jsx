@@ -51,7 +51,7 @@ function MovieDetails() {
   let clickedAvatar = state.watchedMovies.find(
     (movie) => movie.imdbID == params.id
   );
-  /**/
+  /*USEREF?*/
 
   /* Check to see in which list the movie is in in order to render buttons accordingly */
   const inWatchList = state.watchList.some((movieItem) => {
@@ -67,7 +67,7 @@ function MovieDetails() {
     }
     return false;
   });
-  /*PERHAPS POSSIBLE TO REFRACTOR*/
+  /**/
 
   return (
     <>

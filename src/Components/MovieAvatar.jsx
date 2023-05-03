@@ -54,16 +54,6 @@ function MovieAvatar({ movie, buttonTitle }) {
     }
     return false;
   });
-
-  //ETT FÖRSÖK TILL ATT SKAPA EN FUNKTION SOM KOLLAR DETTA ISTÄLLET FÖR ATT UPPREPA
-  // const inList = (list) => {
-  //   list.some((movieItem) => {
-  //     if (movie.imdbID === movieItem.imdbID) {
-  //       return true;
-  //     }
-  //     return false;
-  //   });
-  // };
   /**/
 
   return (

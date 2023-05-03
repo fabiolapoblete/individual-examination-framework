@@ -17,11 +17,11 @@
     &__pagination {
         @include flex-center;
         gap: 0.5rem;
-    }
 
-    &__pagination__pageNumber {
-        color: $textColor;
-        font-size: 1.3rem;
-        font-weight: 600;
+        &__pageNumber {
+            color: $textColor;
+            font-size: 1.3rem;
+            font-weight: 600; 
+        }
     }
 }

@@ -38,7 +38,7 @@ function Rating({ myRating }) {
         <section className={style.ratingContainer__setRating}>
           <RegularButton
             title="-"
-            disabled={rating == 0}
+            disabled={rating == 0 || rating == null}
             action={() => {
               setRating(rating - 1);
               setButtonTitle("save");

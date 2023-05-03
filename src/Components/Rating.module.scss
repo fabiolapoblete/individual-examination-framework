@@ -5,12 +5,11 @@
 
     &__setRating {
         display: flex;
-        align-items: center;
+        align-items: flex-start;
         gap: 0.8rem;
         margin-top: 0.5rem;
 
         button {
-            align-self: flex-end;
             padding: 0.5rem;
             margin:0;
         }
@@ -25,7 +24,7 @@
         text-align: center;
         border: 2px solid $primaryColor;
         border-radius: 6px;
-        padding: 0.2rem;
+        padding: 0.8rem;
     }
 
 }
