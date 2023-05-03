@@ -22,7 +22,7 @@ function MoviePoster({ movie }) {
             className={style.movieAvatar__poster}
             src={
               movie.Poster == "N/A"
-                ? "https://images.unsplash.com/photo-1598899134739-24c46f58b8c0?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=856&q=80}"
+                ? "https://plus.unsplash.com/premium_photo-1676049461949-185dcea09d77?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8MTl8fHBvcGNvcm58ZW58MHx8MHx8&auto=format&fit=crop&w=400&q=60"
                 : movie.Poster
             }
             alt=""

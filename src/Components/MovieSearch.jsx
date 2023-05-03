@@ -82,6 +82,7 @@ function MovieSearch() {
         <p className={style.searchBar__pagination__pageNumber}>{page}</p>
         <RegularButton
           title="&gt;"
+          disabled={searchTerm == ""}
           action={() => {
             setPage(page + 1);
           }}
