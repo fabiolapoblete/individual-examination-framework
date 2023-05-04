@@ -1,14 +1,14 @@
 @import "../variables.scss";
 
 .roundButton {
-    width: 30px;
-    height: 30px;
+    width: 1.9rem;
+    height: 1.9rem;
     font-size: 1.5rem;
     border-radius: 50%;
     @include flex-center;
     position: absolute;
-    bottom: 15px;
-    right: 10px;
+    bottom: 0.9rem;
+    right: 0.6rem;
 }
 
 .regularButton:disabled {
