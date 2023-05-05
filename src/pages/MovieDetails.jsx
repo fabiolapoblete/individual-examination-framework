@@ -55,7 +55,6 @@ function MovieDetails() {
   let clickedAvatar = state.watchedMovies.find(
     (movie) => movie.imdbID == params.id
   );
-  /*USEREF?*/
 
   /* Check to see in which list the movie is in in order to render buttons accordingly */
   const inWatchList = state.watchList.some((movieItem) => {
@@ -76,8 +75,7 @@ function MovieDetails() {
   return (
     <>
       {isLoading ? (
-        <>
-          <h2>loading</h2>
+        <section className={style.loadingSpinner}>
           <RotatingLines
             strokeColor="grey"
             strokeWidth="5"
@@ -85,7 +83,7 @@ function MovieDetails() {
             width="96"
             visible={true}
           />
-        </>
+        </section>
       ) : movie.Response == "False" ? (
         navigate("error")
       ) : (
