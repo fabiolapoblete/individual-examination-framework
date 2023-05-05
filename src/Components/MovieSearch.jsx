@@ -39,10 +39,9 @@ function MovieSearch() {
       : fetch(API_URL)
           .then((response) => response.json())
           .then((movieData) => {
-            console.log(movieData);
             setSearchResult(movieData.Search);
-            console.log(searchResult);
-          });
+          })
+          .catch((error) => console.log(error));
   }, [searchTerm, page]);
 
   useEffect(() => {

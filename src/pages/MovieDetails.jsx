@@ -44,7 +44,8 @@ function MovieDetails() {
       .then((movieData) => {
         setMovie(movieData);
         setIsLoading(false);
-      });
+      })
+      .catch((error) => console.log(error));
   }, []);
   /**/
 
