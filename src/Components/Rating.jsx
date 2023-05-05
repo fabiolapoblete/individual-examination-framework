@@ -14,14 +14,9 @@ function Rating({ myRating }) {
   const navigate = useNavigate();
   const params = useParams();
 
-  /* Declaring states */
   const [rating, setRating] = useState(myRating ? myRating : null);
   const [buttonTitle, setButtonTitle] = useState(myRating ? "edit" : "save");
-  /**/
 
-  /* OnClick the addRating action takes an object containing the current movie id
-  and a rating. The id is used to find the correct movie i the state and the rating
-  is then added to that object, which can be updated as well. */
   const handleRating = () => {
     dispatch(
       addRating({

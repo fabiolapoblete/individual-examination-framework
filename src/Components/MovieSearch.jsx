@@ -11,24 +11,15 @@ import style from "./SearchBar.module.scss";
 function MovieSearch() {
   const dispatch = useDispatch();
 
-  /* Declaration of states */
   const [searchResult, setSearchResult] = useState([]);
   const [searchTerm, setSearchTerm] = useState("");
   const [page, setPage] = useState(1);
-  /**
 
-  /* Declaration of variables */
   const API_URL =
     "http://www.omdbapi.com/?apikey=37fe945a&s=" + searchTerm + "&page=" + page;
 
   let inputValue = "";
-  /**/
 
-  /* 
-  If there is no search term, recommended movies will be shown.
-  If a search is made a fetch to the API is made with set search term.
-  If there is a search result the state is updated and movies are displayed.
-  */
   useEffect(() => {
     searchTerm == ""
       ? fetch("/recommendedMovies.json")
@@ -51,7 +42,6 @@ function MovieSearch() {
       dispatch(fillSearchResultList([]));
     }
   }, [searchResult]);
-  /**/
 
   return (
     <section className={style.searchBar}>
