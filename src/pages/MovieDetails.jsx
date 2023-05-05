@@ -2,6 +2,7 @@
 import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useNavigate, useParams } from "react-router-dom";
+import { RotatingLines } from "react-loader-spinner";
 /*Reducers*/
 import {
   addToWatchList,
@@ -29,6 +30,7 @@ function MovieDetails() {
   /**/
 
   const [movie, setMovie] = useState({});
+  const [isLoading, setIsLoading] = useState(false);
 
   /* Declaration of API_URL using id from page url */
   const API_URL = "http://www.omdbapi.com/?apikey=37fe945a&i=" + params.id;
@@ -36,10 +38,12 @@ function MovieDetails() {
 
   /* In order to get full details about a movie, a specific search has to be made. Hence another fetch towards API using id of current movie */
   useEffect(() => {
+    setIsLoading(true);
     fetch(API_URL)
       .then((response) => response.json())
       .then((movieData) => {
         setMovie(movieData);
+        setIsLoading(false);
       });
   }, []);
   /**/
@@ -71,7 +75,18 @@ function MovieDetails() {
 
   return (
     <>
-      {movie.Response == "False" ? (
+      {isLoading ? (
+        <>
+          <h2>loading</h2>
+          <RotatingLines
+            strokeColor="grey"
+            strokeWidth="5"
+            animationDuration="0.75"
+            width="96"
+            visible={true}
+          />
+        </>
+      ) : movie.Response == "False" ? (
         navigate("error")
       ) : (
         <main className={pageStyle.page}>
