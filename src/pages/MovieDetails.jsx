@@ -23,16 +23,14 @@ function MovieDetails() {
   const navigate = useNavigate();
   const params = useParams();
 
-  /* Get state */
   const state = useSelector((state) => {
     return state;
   });
-  /**/
 
   const [movie, setMovie] = useState({});
   const [isLoading, setIsLoading] = useState(false);
 
-  /* Declaration of API_URL using id from page url */
+  /* API url using id from page url */
   const API_URL = "http://www.omdbapi.com/?apikey=37fe945a&i=" + params.id;
   /**/
 
