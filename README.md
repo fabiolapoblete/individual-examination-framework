@@ -1,6 +1,4 @@
 # Individual examination framework course
-!! **Styling works best using Iphone XR dimensions at the moment**
-
 Main task is to create an aplication with React.js and managing states in Redux. 
 
 ### Techniques
@@ -19,3 +17,4 @@ Main task is to create an aplication with React.js and managing states in Redux.
 
 ## Web app
 https://melodic-jelly-ceb118.netlify.app/
+!! **Styling works best using Iphone XR dimensions at the moment**
