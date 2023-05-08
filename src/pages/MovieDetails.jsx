@@ -31,7 +31,7 @@ function MovieDetails() {
   const [isLoading, setIsLoading] = useState(false);
 
   /* API url using id from page url */
-  const API_URL = "http://www.omdbapi.com/?apikey=37fe945a&i=" + params.id;
+  const API_URL = "https://www.omdbapi.com/?apikey=37fe945a&i=" + params.id;
   /**/
 
   /* In order to get full details about a movie, a specific search has to be made. Hence another fetch towards API using id of current movie */

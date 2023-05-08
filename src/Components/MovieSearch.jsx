@@ -16,7 +16,10 @@ function MovieSearch() {
   const [page, setPage] = useState(1);
 
   const API_URL =
-    "http://www.omdbapi.com/?apikey=37fe945a&s=" + searchTerm + "&page=" + page;
+    "https://www.omdbapi.com/?apikey=37fe945a&s=" +
+    searchTerm +
+    "&page=" +
+    page;
 
   let inputValue = "";
 
