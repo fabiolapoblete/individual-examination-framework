@@ -18,3 +18,4 @@ Main task is to create an aplication with React.js and managing states in Redux.
 * Read objects
 
 ## Web app
+https://melodic-jelly-ceb118.netlify.app/
